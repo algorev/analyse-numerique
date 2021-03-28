@@ -7,13 +7,12 @@ namespace analyse_numerique
         static void Main(string[] args)
         {
             var problem = new Problem(
-                (x) => x,
-                (_) => 1);
-            var solver = new BisectionMethod(
-                problem,
-                -10,
-                5);
-            solver.EpsilonSolve(0.001, 30, 0);
+                (x) => x*x - 2,
+                (x) => 2*x);
+            var solver = new NewtonsMethod(
+                problem);
+            //solver.EpsilonSolve(0.001, 30, 6);
+            solver.IterSolve(10, 6);
         }
     }
 }
